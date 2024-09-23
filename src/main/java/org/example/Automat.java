@@ -21,6 +21,10 @@ public class Automat<T> {
             zustand = uebergang.to();
         }
 
+        if(!zustand.isEnd()) {
+            throw new RuntimeException("Invalid end point");
+        }
+
         return zustand;
     }
 }

@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Zustand<String> q1 = new Zustand<>("q1");
-        Zustand<String> q2 = new Zustand<>("q2");
-        Zustand<String> q3 = new Zustand<>("q3");
-        Zustand<String> q4 = new Zustand<>("q4");
+        Zustand<String> q1 = new Zustand<>("q1", false);
+        Zustand<String> q2 = new Zustand<>("q2", true);
+        Zustand<String> q3 = new Zustand<>("q3", false);
+        Zustand<String> q4 = new Zustand<>("q4", true);
 
         q1.addUebergang(q2, "1");
         q2.addUebergang(q3, "0");
