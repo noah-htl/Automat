@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Additum2 implements Runnable{
     @Override
@@ -15,11 +13,11 @@ public class Additum2 implements Runnable{
         Zustand<Integer> q6 = new Zustand<>("q6");
         Zustand<Integer> q7 = new Zustand<>("q7", true);
 
-        q0.addUebergang(q1, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28);
+        q0.addUebergang(q1, integer -> integer >= 1 && integer <= 28);
         q0.addUebergang(q2, 29, 30);
         q0.addUebergang(q3, 31);
 
-        q1.addUebergang(q4, 1,2,3,4,5,6,7,8,9,10,11,12);
+        q1.addUebergang(q4, integer -> integer >= 1 && integer <= 12);
         q2.addUebergang(q5, 1,3,4,5,6,7,8,9,10,11,12);
         q3.addUebergang(q6, 1,3,5,7,8,10,12);
 

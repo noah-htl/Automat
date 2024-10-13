@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Zustand<T> {
     private final String id;
@@ -18,18 +19,22 @@ public class Zustand<T> {
     }
 
     public void addUebergang(Zustand<T> target, T type) {
-        this.uebergaenge.add(new Uebergang<T>(this, target, type));
+        this.uebergaenge.add(new NormalerUebergang<T>(this, target, type));
+    }
+
+    public void addUebergang(Zustand<T> target, Predicate<T> type) {
+        this.uebergaenge.add(new PredicateUebergang<>(this, target, type));
     }
 
     public void addUebergang(Zustand<T> target, T ...type) {
         for(T t:type) {
-            this.uebergaenge.add(new Uebergang<T>(this, target, t));
+            this.uebergaenge.add(new NormalerUebergang<T>(this, target, t));
         }
     }
 
     public Uebergang<T> getUebergang(T token) {
         for (Uebergang<T> uebergang:uebergaenge) {
-            if(uebergang.type().equals(token)) {
+            if(uebergang.canBeTaken(token)) {
                 return uebergang;
             }
         }
