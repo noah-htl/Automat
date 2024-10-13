@@ -13,6 +13,10 @@ public class Zustand<T> {
         this.isEnd = end;
     }
 
+    public Zustand(String id) {
+        this(id, false);
+    }
+
     public void addUebergang(Zustand<T> target, T type) {
         this.uebergaenge.add(new Uebergang<T>(this, target, type));
     }
