@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Automat<T> {
@@ -7,6 +8,10 @@ public class Automat<T> {
 
     public Automat(Zustand<T> startZustand) {
         this.startZustand = startZustand;
+    }
+
+    public Zustand<T> run(T ...tokens) {
+        return this.run(new ArrayList<>(List.of(tokens)));
     }
 
     public Zustand<T> run(List<T> tokens) {

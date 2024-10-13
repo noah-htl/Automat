@@ -21,6 +21,12 @@ public class Zustand<T> {
         this.uebergaenge.add(new Uebergang<T>(this, target, type));
     }
 
+    public void addUebergang(Zustand<T> target, T ...type) {
+        for(T t:type) {
+            this.uebergaenge.add(new Uebergang<T>(this, target, t));
+        }
+    }
+
     public Uebergang<T> getUebergang(T token) {
         for (Uebergang<T> uebergang:uebergaenge) {
             if(uebergang.type().equals(token)) {
